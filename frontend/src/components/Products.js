@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 
-class Players extends React.Component {
+class Products extends React.Component {
 
     state = { details: [], }
 
@@ -19,13 +19,12 @@ class Players extends React.Component {
     render() {
         return(
             <div>
-                <header> got yarr data </header>
                 {this.state.details.map((output, id) => (
                     <div key={id}>
                         <div class="container bg-neutral">
-                            <h2 class="text-xl font-bold text-primary">Player: {output.player}</h2>
-                            <h3 class="font-bold text-primary">Role:  {output.role}</h3>
-                            <h4 class="font-bold text-primary">Team: {output.team}</h4>
+                            <h2 class="text-xl font-bold text-primary">{output.product_name}</h2>
+                            <h3 class="font-bold text-primary">Price:  {output.product_price}</h3>
+                            <h4 class="font-bold text-primary">ID: {output.product_id}</h4>
                         </div>
                         <br></br>
                     </div>
@@ -35,4 +34,4 @@ class Players extends React.Component {
     }
 }
 
-export default Players;
+export default Products;

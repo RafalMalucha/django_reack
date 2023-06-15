@@ -1,12 +1,12 @@
 import React from 'react';
-import Players from './components/Players.js'
+import Products from './components/Products.js'
 
 class App extends React.Component {
 
 render() {
     return(
         <div>
-            <Players />
+            <Products />
         </div>
     )
 }

@@ -28,7 +28,7 @@ class ProductView(APIView):
         output = [{'product_id': output.product_id, 
                    "product_category": output.product_category, 
                    "product_name": output.product_name,
-                   'product_name': output.product_price}
+                   'product_price': output.product_price}
                    for output in Products.objects.all()]
         return Response(output)
     

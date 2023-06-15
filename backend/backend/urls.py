@@ -20,6 +20,7 @@ from django.urls import path, include
 from app.views import *
 
 urlpatterns = [
+    path('', ProductView.as_view(), name="product"),
     path('admin/', admin.site.urls),
     path('product/', ProductView.as_view(), name="product"),
     path('product_category/', ProductCategoryView.as_view(), name="product_category")
