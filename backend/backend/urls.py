@@ -21,5 +21,6 @@ from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ReactView.as_view(), name="dupa")
+    path('product/', ProductView.as_view(), name="product"),
+    path('product_category/', ProductCategoryView.as_view(), name="product_category")
 ]

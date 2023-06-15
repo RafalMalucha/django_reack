@@ -5,19 +5,35 @@ from . models import *
 from . serializer import *
 
 # Create your views here.
-class ReactView(APIView):
-
-    serializer_class = ReactSerializer
+class ProductCategoryView(APIView):
+    
+    serializer_class = ProductCategorySerializer
 
     def get(self, request):
-        output = [{'player': output.player, 
-                   "role": output.role, 
-                   "team": output.team}
-                   for output in React.objects.all()]
+        output = [{'category': output.product_category}
+                   for output in ProductCategory.objects.all()]
         return Response(output)
     
     def post(self, request):
-        serializer = ReactSerializer(data=request.data)
+        serializer = ProductSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+class ProductView(APIView):
+
+    serializer_class = ProductSerializer
+
+    def get(self, request):
+        output = [{'product_id': output.product_id, 
+                   "product_category": output.product_category, 
+                   "product_name": output.product_name,
+                   'product_name': output.product_price}
+                   for output in Products.objects.all()]
+        return Response(output)
+    
+    def post(self, request):
+        serializer = ProductSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
