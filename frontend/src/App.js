@@ -1,7 +1,6 @@
 import React from 'react';
-import Products from './components/Products.js'
-import Navbar from "./components/Navbar.js"
-import Popular from './components/Popular.js';
+import Navbar from "./components/Navbar.js";
+import StoreMain from "./components/StoreMain.js";
 
 class App extends React.Component {
 
@@ -9,8 +8,7 @@ render() {
     return(
         <div>
             <Navbar />
-            <Popular />
-            <Products />
+            <StoreMain />
         </div>
     )
 }
