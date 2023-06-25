@@ -9,3 +9,7 @@ def get_products():
     response = requests.get(url)
     data = response.json()
     return {"data" : data}
+
+@app.get("/instruments")
+def get_instruments():
+    pass

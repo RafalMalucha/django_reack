@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from . models import *
-from . serializer import *
+from .models import *
+from .serializer import *
 
 # Create your views here.
 class ProductView(APIView):
@@ -22,4 +22,8 @@ class ProductView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+        
+def only_instruments(request):
+    instrumets = Products.objects.filter(product_category="instrument")
+    return {"instrumets": instrumets}
         
