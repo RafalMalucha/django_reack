@@ -1,20 +1,20 @@
 from django.shortcuts import render
-from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework.response import Response
-from . models import *
-from . serializer import *
+from .serializers import ProductSerializer
+from .models import Product
 
 # Create your views here.
-class ProductView(APIView):
+class ProductView(generics.CreateAPIView):
 
-    serializer_class = ProductSerializer
+    http_method_names = ['get', 'post']
 
     def get(self, request):
         output = [{'product_id': output.product_id, 
                    "product_category": output.product_category, 
                    "product_name": output.product_name,
                    'product_price': output.product_price}
-                   for output in Products.objects.all()]
+                   for output in Product.objects.all()]
         return Response(output)
 
     def post(self, request):
@@ -22,4 +22,6 @@ class ProductView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
-        
+
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
