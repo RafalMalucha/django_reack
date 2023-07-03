@@ -1,14 +1,14 @@
 import React from 'react';
 import Test from './components/test';
-//import Navbar from "./components/Navbar.js";
-//import StoreMain from "./components/StoreMain.js";
+import AddProductForm from './components/AddProductForm';
 
 class App extends React.Component {
 
 render() {
     return(
         <div>
-            <Test />
+            <Test /> 
+            <AddProductForm />
         </div>
     )
 }
