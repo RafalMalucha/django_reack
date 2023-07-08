@@ -91,8 +91,9 @@ class InstrumentProductView(generics.CreateAPIView):
             return Response(serializer.data)
         
 
-class ProductSubmit(UpdateView):
+class ProductSubmit(generics.CreateAPIView):
 
+    http_method_names = ['get', 'post']
     permission_classes = (AllowAny,)
     model = Product
 
