@@ -14,7 +14,7 @@ const AddProductForm = () => {
 
     try {
         const response = await fetch('http://127.0.0.1:8000/api/submit/', {
-            method: 'POST',
+            method: 'post',
             data: {
                 "product_name": "aaa",
                 "product_price": 13.50,
@@ -23,6 +23,7 @@ const AddProductForm = () => {
         });
 
         if (response.ok) {
+            console.log(response.status)
             console.log('Product added successfully');
             setName('');
             setPrice('');

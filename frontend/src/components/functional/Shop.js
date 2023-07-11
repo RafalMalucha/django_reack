@@ -1,6 +1,9 @@
 import React from "react";
+import ButtonTemplate from "../ui_elements/ButtonTemplate";
+import ProductCard from "../ui_elements/ProductCard";
+//import ProductCard from "../components/ui_elements/ProductCard";
 
-class Test extends React.Component {
+class Shop extends React.Component {
 
     state = {
         currentOffer: 'all',
@@ -66,36 +69,18 @@ class Test extends React.Component {
 
     render() {
         return(
-        <div>
             <div>
-                <h1>test test</h1>
-                <h3>
+                <h1>aaa</h1>
+                <div class="flex flex-row">
                     {this.state.details.map((output, id) => (
-                        <div key={id}>
-                            <h1>{output.product_name}</h1>
-                        </div>
+                        <ProductCard id={id} ProductData={output}/>
                     ))}
-                </h3>
-                <button onClick={this.handleOnlyHardware}>
-                    hardware
-                </button>
-                <br></br>
-                <button onClick={this.handleOnlySoftware}>
-                    software
-                </button>
-                <br></br>
-                <button onClick={this.handleOnlyInstrument}>
-                    instrument
-                </button>
-                <br></br>
-                <button onClick={this.handleAll}>
-                    all
-                </button>
+                </div>
+            
             </div>
-        </div>
         )
     }
 
 }
 
-export default Test;
+export default Shop;
