@@ -37,15 +37,15 @@ module.exports = {
         themes: [
           {
             mytheme: {
-                "primary": "#e8c813",           
-                "secondary": "#a3e635",         
-                "accent": "#e1e4eb",                           
-                "neutral": "#292929",                            
-                "base-100": "#1c1c1c",                            
-                "info": "#4592C9",                           
-                "success": "#14A95E",                            
-                "warning": "#fde047",                            
-                "error": "#E65C70",
+                "primary": "#34cdd8",//done           
+                "secondary": "#d01fa1",//done         
+                "accent": "#98f5fe",//done                           
+                "neutral": "#1e0a35",//done                          
+                "base-100": "#112a34",//done                            
+                "info": "#d5e9ea",//done                           
+                "success": "#12fe85",//done                            
+                "warning": "#fa631a",//done                            
+                "error": "#e42221",//done
             },
           },
         ],
