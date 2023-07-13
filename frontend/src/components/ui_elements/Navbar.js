@@ -1,26 +1,24 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import store from "../../store.js";
+import TestSlice from "../../redux/TestReducer.js";
 
-class Navbar extends React.Component {
+function Navbar() {
 
-    state = {
-        isLoggedIn: false,
-        productsInCart: 0
+    //const username = useSelector(state => store.username);
+
+    const changeIsLoggedInState = () => {
+        console.log('')
     }
 
-    changeIsLoggedInState = () => {
-        this.setState({
-            isLoggedIn: !this.state.isLoggedIn
-        })
-    }
-
-    render() {
-        return (
+    const username = useSelector((state) => TestSlice.username);
+ 
+    return (
             <>
-                <div class="navbar bg-neutral">
+                <div class="navbar bg-gradient-to-r from-primary to-neutral">
                     <div class="flex-1">
                         <a class="btn btn-ghost normal-case text-xl italic hover:not-italic">
-                            <a id="1" class="text-primary">Synth</a>
-                            <a id="2" class="text-secondary">Shop</a>
+                            <a class="text-neutral">SynthShop {username}</a>
                         </a>
                     </div>
                     <div class="flex-none">
@@ -28,8 +26,8 @@ class Navbar extends React.Component {
                             <label tabindex="0" class="btn btn-ghost btn-circle">
                                 <div class="indicator">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                                    {this.state.productsInCart !== 0 ? (
-                                        <span class="badge badge-sm indicator-item bg-primary text-black">{this.state.productsInCart}</span>
+                                    {0 !== 0 ? (
+                                        <span class="badge badge-sm indicator-item bg-secondary text-accent">{this.state.productsInCart}</span>
                                     ) : (
                                         <></>
                                     )}
@@ -45,37 +43,37 @@ class Navbar extends React.Component {
                                 </div>
                             </div>
                         </div>
-                            <div>
-                                <div class="dropdown dropdown-end">
-                                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                                        <div class="w-10 rounded-full">
-                                            <img src="../images/placeholder.png" />
-                                        </div>
-                                    </label>
-                                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-neutral rounded-box w-52">
-                                        <li>
-                                            <a class="justify-between">
-                                                Profile
-                                            </a>
-                                        </li>
-                                        <li><a>Settings</a></li>
-                                        <li>
-                                        {this.state.isLoggedIn ? (
-                                            <a onClick={this.changeIsLoggedInState}>Logout</a>
-                                        ) : (
-                                            <a onClick={this.changeIsLoggedInState}>Login</a>
-                                            )}    
-                                        </li> 
-                                    </ul>
-                                </div>
+                        <div>
+                            <div class="dropdown dropdown-end">
+                                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                                    <div class="w-10 rounded-full">
+                                        <img src="../images/placeholder.png" />
+                                    </div>
+                                </label>
+                                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-neutral rounded-box w-52">
+                                    <li>
+                                        <a class="justify-between">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li><a>Settings</a></li>
+                                    <li>
+                                    {true ? (
+                                        <a onClick={changeIsLoggedInState}>Logout</a>
+                                    ) : (
+                                        <a onClick={changeIsLoggedInState}>Login</a>
+                                    )}    
+                                    </li> 
+                                </ul>
                             </div>
-                        </div>                        
-                    </div>
+                        </div>
+                    </div>                        
+                </div>
             </>
 
-        );
-    }
+    );
 }
+
 
 export default Navbar;
 
