@@ -8,19 +8,27 @@ class Shop extends React.Component {
     state = {
         currentOffer: 'all',
         currentApiLink: 'http://127.0.0.1:8000/api/',
-        details: []
+        details: [],
+        loadedProducts: {}
     }
 
     componentDidMount() {
         fetch('http://127.0.0.1:8000/api/')
         .then(res => res.json()) // Parse the response as JSON
         .then(data => {
+            console.log(data)
+            this.getAmountOfLoadedProducts()
             this.setState({
-                details: data // Update the component state with the data
+                details: data, // Update the component state with the data
+                loadedProducts: data
             });
         }).catch(err => {
             console.error(err); // Handle any errors that occurred during the request
         });
+    }
+
+    getAmountOfLoadedProducts() {
+        console.log(this.state.details.length)
     }
 
     fetchData = () => {
@@ -33,6 +41,7 @@ class Shop extends React.Component {
         }).catch(err => {
             console.error(err); // Handle any errors that occurred during the request
         });
+        this.getAmountOfLoadedProducts()
     }
 
     handleOnlyHardware = () => {
@@ -41,6 +50,7 @@ class Shop extends React.Component {
             currentApiLink: 'http://127.0.0.1:8000/api/hardware/'
         })
         this.fetchData()
+        this.getAmountOfLoadedProducts()
     }
 
     handleOnlySoftware = () => {
@@ -49,6 +59,7 @@ class Shop extends React.Component {
             currentApiLink: 'http://127.0.0.1:8000/api/software/'
         })
         this.fetchData()
+        this.getAmountOfLoadedProducts()
     }
 
     handleOnlyInstrument = () => {
@@ -57,6 +68,7 @@ class Shop extends React.Component {
             currentApiLink: 'http://127.0.0.1:8000/api/instrument/'
         })
         this.fetchData()
+        this.getAmountOfLoadedProducts()
     }
 
     handleAll = () => {
@@ -65,18 +77,20 @@ class Shop extends React.Component {
             currentApiLink: 'http://127.0.0.1:8000/api/'
         })
         this.fetchData()
+        this.getAmountOfLoadedProducts()
     }
 
     render() {
         return(
             <div>
-                <h1>aaa</h1>
-                <div class="flex flex-row">
-                    {this.state.details.map((output, id) => (
-                        <ProductCard id={id} ProductData={output}/>
+                <div class="flex flex-col">
+                    {this.state.details.map((output, id) => ( 
+                        <ProductCard key={id} ProductData={output}/>
                     ))}
                 </div>
-            
+                <div>
+                    {this.state.details.length}
+                </div>
             </div>
         )
     }
