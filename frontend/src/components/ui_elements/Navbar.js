@@ -1,25 +1,24 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import store from "../../store.js";
-import TestSlice from "../../redux/TestReducer.js";
 
 function Navbar() {
-
-    //const username = useSelector(state => store.username);
 
     const changeIsLoggedInState = () => {
         console.log('')
     }
 
-    const username = useSelector((state) => TestSlice.username);
+    const user = useSelector((state) => state.user.value)
+
+    const cart = useSelector((state) => state.cart.value)
  
     return (
             <>
                 <div class="navbar bg-gradient-to-r from-primary to-neutral">
                     <div class="flex-1">
                         <a class="btn btn-ghost normal-case text-xl italic hover:not-italic">
-                            <a class="text-neutral">SynthShop {username}</a>
+                            <a class="text-neutral">SynthShop</a>
                         </a>
+                        <a class="normal-case text-xl italic mx-3 text-base-100">Hi {user.username}!</a>
                     </div>
                     <div class="flex-none">
                         <div class="dropdown dropdown-end">
