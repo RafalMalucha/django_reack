@@ -75,15 +75,3 @@ function Navbar() {
 
 
 export default Navbar;
-
-//{this.state.isLoggedIn ? (
-//    <a onClick={this.changeIsLoggedInState}>Logout</a>
-//    ) : (
- //      <a onClick={this.changeIsLoggedInState}>Login</a>
- //   )}
-
-//{this.state.productsInCart !== 0 ? (
- //   <span class="badge badge-sm indicator-item bg-primary text-black">{this.state.productsInCart}</span>
-//) : (
- //   <></>
-//)}
